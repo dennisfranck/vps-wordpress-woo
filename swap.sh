@@ -25,15 +25,15 @@ fi
 
 
 # Inicia script
-sudo fallocate -l $SWAP_SIZE $SWAP_PATH
-sudo chmod 600 $SWAP_PATH
-sudo mkswap $SWAP_PATH
-sudo swapon $SWAP_PATH
-echo "$SWAP_PATH   none    swap    sw    0   0" | sudo tee /etc/fstab -a
-sudo sysctl vm.swappiness=10
-echo "vm.swappiness=10" | sudo tee /etc/sysctl.conf -a
-sudo sysctl vm.vfs_cache_pressure=50
-echo "vm.vfs_cache_pressure=50" | sudo tee /etc/sysctl.conf -a
+fallocate -l $SWAP_SIZE $SWAP_PATH
+chmod 600 $SWAP_PATH
+mkswap $SWAP_PATH
+swapon $SWAP_PATH
+echo "$SWAP_PATH   none    swap    sw    0   0" | tee /etc/fstab -a
+sysctl vm.swappiness=10
+echo "vm.swappiness=10" | tee /etc/sysctl.conf -a
+sysctl vm.vfs_cache_pressure=50
+echo "vm.vfs_cache_pressure=50" | tee /etc/sysctl.conf -a
 
 
 # Finalizado
